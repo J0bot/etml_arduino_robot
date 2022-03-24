@@ -13,7 +13,7 @@ Ce projet a été possible grâce à la collaboration de professeurs d'autres se
 - Avoir déjà créé quelques projets en Arduino
 - Connaissances de base en modélisation 3D (Fusion 360)
 - Comprendre un schéma électronique
-- Savoir faire fonctionner des composants sans jamais lire la doc
+- Savoir faire fonctionner des composants sans jamais lire la doc qui est inexistante de toutes façons
 - Pas mal d'imagination
 
 ## Logiciels utilisés
