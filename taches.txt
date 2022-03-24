@@ -1,0 +1,16 @@
+1. Tester les composants
+2. Mettre en place un environement de prototypage
+3. Brainsorming du prototype
+4. Création du prototype (dans mon cas en carton)
+5. Codage du prototype
+6. Test du prototype
+7. Analyse des tests et brainstorming des améliorations
+8. Nouveau brainstorming avec les nouveau éléments appris
+9. Design du produit final, brouillon
+10. Design en logiciel du produit final
+11. Check si tout concorde
+12. Impression 3D du produit final
+13. cablage et montage du produit final
+14. Codage du produit
+15. Tests du produit
+16. Nice well played 
