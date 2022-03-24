@@ -17,8 +17,14 @@ Ce projet a été possible grâce à la collaboration de professeurs d'autres se
 - Pas mal d'imagination
 
 ## Logiciels utilisés
-- Visual studio code avec l'extension PlatformIO
+- Visual studio code avec l'extension PlatformIO pour la programmation C++
 <img src="https://user-images.githubusercontent.com/65437977/159870094-7ab2f461-47c2-42fd-bcb6-49ad8bf8f327.png" alt="drawing" width="500px"/>
+
+- Autodesk Fusion 360 pour la modélisation 3D
+<img src="https://user-images.githubusercontent.com/65437977/159870485-d9eab6a9-1ddb-46a4-b054-0ecd811b77c1.png" alt="drawing" width="500px"/>
+
+- Adobe Acrobat Reader pour la lecture des schémas
+<img src="https://user-images.githubusercontent.com/65437977/159870833-46027aec-0fdf-42de-baef-5c5c1a8fcc61.png" alt="drawing" width="500px"/>
 
 
 ## Matériel utilisé
