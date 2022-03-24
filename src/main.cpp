@@ -32,33 +32,16 @@ void setup() {
   digitalWrite(trigPinR, LOW);
   digitalWrite(trigPinL, LOW);
 
-
   // Mettre tous les pins qu'on aura besoin en output
-  // Pas besoin de définir le mode des pins PWN
   pinMode(MOT2CW,OUTPUT);
   pinMode(MOT2CCW,OUTPUT);
   pinMode(MOT1CW,OUTPUT);
   pinMode(MOT1CCW,OUTPUT);
 
-  // Allumer le premier moteur et lui donner une vitesse avec le PWN
-  digitalWrite(MOT2CW,LOW);
-  digitalWrite(MOT2CCW,HIGH);
-  analogWrite(MOT2PWN,255);
-  
-  // désactiver le deuxième moteur
-  digitalWrite(MOT1CW,HIGH);
-  digitalWrite(MOT1CCW,LOW);
-  analogWrite(MOT1PWN,255);
-
 }
 
 
 void loop() {
-  /*
-  Serial.println(getProxValue(1));
-  Serial.println(getProxValue(2));
-  delay(100);
-  */
 
   if(getProxValue(1)>500)
   {
@@ -85,7 +68,6 @@ void loop() {
     digitalWrite(MOT2CCW,LOW);
     analogWrite(MOT2PWN,255);
   }
-  //delay(100);
 } 
 
 // For right prox c'est 1 et pour le gauche c'est 2
@@ -114,12 +96,7 @@ int getProxValue(int prox)
   digitalWrite(trigPin, LOW);
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
-  /*
-  Serial.print("Duration for ");
-  Serial.print(prox);
-  Serial.print(" : ");
-  Serial.println(duration);
-  */
+
   return duration;
 
 }
