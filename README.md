@@ -5,6 +5,8 @@ J'ai créé ce projet pour approfondir mes connaissances en arduino, en robotiqu
 
 Il a été effectué dans le cadre du projet d'approfondissement 2 à l'ETML.
 
+Ce projet a été possible grâce à la collaboration de professeurs d'autres sections de l'ETML, éléctronique et automatique
+
 ### Prerequis :
 - Avoir des connaissances de base en électronique
 - Être à l'aise avec le langage de programmation C++
