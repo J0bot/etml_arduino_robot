@@ -16,6 +16,11 @@ Ce projet a été possible grâce à la collaboration de professeurs d'autres se
 - Savoir faire fonctionner des composants sans jamais lire la doc
 - Pas mal d'imagination
 
+## Logiciels utilisés
+- Visual studio code avec l'extension PlatformIO
+<img src="https://user-images.githubusercontent.com/65437977/159870094-7ab2f461-47c2-42fd-bcb6-49ad8bf8f327.png" alt="drawing" width="500px"/>
+
+
 ## Matériel utilisé
 
 * 1 Arduino MKR wifi 1010
