@@ -1,5 +1,8 @@
 # etml_arduino_robot
 
+<img src="https://user-images.githubusercontent.com/65437977/160143964-6706e73c-b619-45cb-ad78-6e1bade8f828.png" alt="drawing" width="600px"/>
+
+
 ## Pourquoi ce projet ?
 J'ai créé ce projet pour approfondir mes connaissances en arduino, en robotique et en modélisation 3D.
 
