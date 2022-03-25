@@ -52,8 +52,13 @@ Ce projet a été possible grâce à la collaboration de professeurs d'autres se
 <img src="https://user-images.githubusercontent.com/65437977/159869421-e291e112-9035-41a3-a6a8-354602ff9d78.png" alt="drawing" width="300px"/>
 
 ***
-* 2 batteries 18650 lithium avec BMS sortie 3.3V et 5V pour alimentation arduino, driver et capteurs
+* 2 batteries 18650 lithium avec BMS sortie 3.3V et 5V pour alimentation driver et capteurs
 <img src="https://user-images.githubusercontent.com/65437977/146524992-2dacc033-2117-400f-b0d0-4bbd75ae07f4.png" alt="drawing" width="300px"/>
+
+***
+
+* 1 batterie Lithium Ion 3.7v pour l'alimentation de l'arduino
+<img src="![image](https://user-images.githubusercontent.com/65437977/160144358-4dbb220a-6ae7-4a20-9f42-82d0bd7e23e7.png)" alt="drawing" width="300px"/>
 
 ***
 
