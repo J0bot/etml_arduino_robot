@@ -19,6 +19,8 @@
 
 //Déclaration des fonctions
 int getProxValue(int);
+void runWithProx();
+void justRun();
 
 void setup() {
   //Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
@@ -42,7 +44,12 @@ void setup() {
 
 
 void loop() {
+  runWithProx();
+ 
+} 
 
+void runWithProx()
+{
   if(getProxValue(1)>500)
   {
     digitalWrite(MOT1CW,LOW);
@@ -68,8 +75,19 @@ void loop() {
     digitalWrite(MOT2CCW,LOW);
     analogWrite(MOT2PWN,255);
   }
-} 
+}
 
+void justRun()
+{
+  digitalWrite(MOT2CW,LOW);
+  digitalWrite(MOT2CCW,HIGH);
+  analogWrite(MOT2PWN,255);
+  digitalWrite(MOT1CW,LOW);
+  digitalWrite(MOT1CCW,HIGH);
+  analogWrite(MOT1PWN,255);
+
+
+}
 // For right prox c'est 1 et pour le gauche c'est 2
 int getProxValue(int prox)
 {
