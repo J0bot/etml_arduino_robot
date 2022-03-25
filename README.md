@@ -58,7 +58,7 @@ Ce projet a été possible grâce à la collaboration de professeurs d'autres se
 ***
 
 * 1 batterie Lithium Ion 3.7v pour l'alimentation de l'arduino
-<img src="![image](https://user-images.githubusercontent.com/65437977/160144358-4dbb220a-6ae7-4a20-9f42-82d0bd7e23e7.png)" alt="drawing" width="300px"/>
+<img src="https://user-images.githubusercontent.com/65437977/160144358-4dbb220a-6ae7-4a20-9f42-82d0bd7e23e7.png" alt="drawing" width="300px"/>
 
 ***
 
