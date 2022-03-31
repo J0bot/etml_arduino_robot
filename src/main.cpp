@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include <WiFiNINA.h>
+#include <aREST.h>
 
 //pin du capteur ultrasons
 #define echoPinR 11
@@ -16,14 +18,28 @@
 #define MOT1CCW 9
 #define MOT1PWN 5
 
+aREST rest = aREST();
+
+char ssid[] = "NETGEAR96";      // your network SSID (name)
+char pass[] = "freshviolin032";   // your network password
+int keyIndex = 0;                 // your network key Index number (needed only for WEP)
+
+int status = WL_IDLE_STATUS;
+
+WiFiServer restServer(80);
 
 //Déclaration des fonctions
 int getProxValue(int);
 void runWithProx();
 void justRun();
+void setupAPI();
+void runWithAPI();
+void printWifiStatus();
+int stopMotors(String);
+int startMotors(String);
 
 void setup() {
-  //Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
+  Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
   
   //Pins pour les capteurs
   pinMode(trigPinR, OUTPUT); 
@@ -39,13 +55,13 @@ void setup() {
   pinMode(MOT2CCW,OUTPUT);
   pinMode(MOT1CW,OUTPUT);
   pinMode(MOT1CCW,OUTPUT);
-
+  
+  setupAPI();
 }
 
 
 void loop() {
-  runWithProx();
- 
+  runWithAPI();
 } 
 
 void runWithProx()
@@ -76,6 +92,8 @@ void runWithProx()
     analogWrite(MOT2PWN,255);
   }
 }
+
+
 
 void justRun()
 {
@@ -117,4 +135,82 @@ int getProxValue(int prox)
 
   return duration;
 
+}
+
+void setupAPI()
+{
+  //Rest stuff
+
+  rest.function("start",startMotors);
+  rest.function("stop",stopMotors);
+  // Give name and ID to device
+  rest.set_id("008");
+  rest.set_name("arduino_machine");
+
+  // check for the presence of the shield:
+  if (WiFi.status() == WL_NO_SHIELD) {
+    Serial.println("WiFi shield not present");
+    // don't continue:
+    while (true);
+  }
+
+  // attempt to connect to Wifi network:
+  while ( status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    status = WiFi.begin(ssid, pass);
+
+    // wait 10 seconds for connection:
+    delay(5000);
+  }
+  printWifiStatus();
+
+  // Start du serveur
+  restServer.begin();
+}
+
+void runWithAPI()
+{
+  // Handle REST calls
+  WiFiClient client = restServer.available();
+  rest.handle(client);
+
+}
+
+void printWifiStatus() {
+    // print the SSID of the network you're attached to:
+    Serial.print("SSID: ");
+    Serial.println(WiFi.SSID());
+
+    // print your WiFi shield's IP address:
+    IPAddress ip = WiFi.localIP();
+    Serial.print("IP Address: ");
+    Serial.println(ip);
+
+    IPAddress subnet = WiFi.subnetMask();
+    Serial.print("Netmask: ");
+    Serial.println(subnet);
+
+    IPAddress gateway = WiFi.gatewayIP();
+    Serial.print("Gateway: ");
+    Serial.println(gateway);
+
+    // print the received signal strength:
+    long rssi = WiFi.RSSI();
+    Serial.print("signal strength (RSSI):");
+    Serial.print(rssi);
+    Serial.println(" dBm");
+}
+
+int stopMotors(String command){
+  analogWrite(5, 0);
+  analogWrite(4, 0);
+  return 0;
+}
+
+int startMotors(String command){
+  analogWrite(5, 255);
+  analogWrite(4, 255);
+  return 0;
 }
