@@ -26,6 +26,14 @@ int keyIndex = 0;                 // your network key Index number (needed only 
 
 int status = WL_IDLE_STATUS;
 
+int running = 1;
+
+unsigned long currentMillis = millis();
+unsigned long interval = 1000;
+unsigned long previousMillis = 0;
+int running1 = 1;
+int running2 = 1;
+
 WiFiServer restServer(80);
 
 //Déclaration des fonctions
@@ -37,6 +45,9 @@ void runWithAPI();
 void printWifiStatus();
 int stopMotors(String);
 int startMotors(String);
+int startFunction(String);
+int setRunning(String);
+
 
 void setup() {
   Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
@@ -140,13 +151,16 @@ int getProxValue(int prox)
 void setupAPI()
 {
   //Rest stuff
-
   rest.function("start",startMotors);
   rest.function("stop",stopMotors);
+  rest.function("function",startFunction);
+  rest.function("set_running",setRunning);
+  rest.variable("running",&running);
   // Give name and ID to device
   rest.set_id("008");
   rest.set_name("arduino_machine");
 
+  rest.function("set_running",setRunning);
   // check for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
     Serial.println("WiFi shield not present");
@@ -170,37 +184,43 @@ void setupAPI()
   restServer.begin();
 }
 
+
+
 void runWithAPI()
 {
   // Handle REST calls
   WiFiClient client = restServer.available();
   rest.handle(client);
 
+  if(running==1){
+    startFunction(" ");
+  }
+
 }
 
 void printWifiStatus() {
-    // print the SSID of the network you're attached to:
-    Serial.print("SSID: ");
-    Serial.println(WiFi.SSID());
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
 
-    // print your WiFi shield's IP address:
-    IPAddress ip = WiFi.localIP();
-    Serial.print("IP Address: ");
-    Serial.println(ip);
+  // print your WiFi shield's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("IP Address: ");
+  Serial.println(ip);
 
-    IPAddress subnet = WiFi.subnetMask();
-    Serial.print("Netmask: ");
-    Serial.println(subnet);
+  IPAddress subnet = WiFi.subnetMask();
+  Serial.print("Netmask: ");
+  Serial.println(subnet);
 
-    IPAddress gateway = WiFi.gatewayIP();
-    Serial.print("Gateway: ");
-    Serial.println(gateway);
+  IPAddress gateway = WiFi.gatewayIP();
+  Serial.print("Gateway: ");
+  Serial.println(gateway);
 
-    // print the received signal strength:
-    long rssi = WiFi.RSSI();
-    Serial.print("signal strength (RSSI):");
-    Serial.print(rssi);
-    Serial.println(" dBm");
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
 }
 
 int stopMotors(String command){
@@ -213,4 +233,45 @@ int startMotors(String command){
   analogWrite(5, 255);
   analogWrite(4, 255);
   return 0;
+}
+
+int startFunction(String command)
+{
+  
+  unsigned long currentMillis = millis();
+
+  if(currentMillis - previousMillis >= interval) {
+  // save the last time you blinked the LED
+    previousMillis = currentMillis;
+
+    if(running1 ==1 && running2 == 1)
+    {
+      digitalWrite(MOT2CW,LOW);
+      digitalWrite(MOT2CCW,HIGH);
+      digitalWrite(MOT1CW,LOW);
+      digitalWrite(MOT1CCW,HIGH);
+      running1 = 2;
+      running2 = 2;
+    }
+    else{
+      digitalWrite(MOT2CW,HIGH);
+      digitalWrite(MOT2CCW,LOW);
+      digitalWrite(MOT1CW,HIGH);
+      digitalWrite(MOT1CCW,LOW);
+      running1 = 1;
+      running2 = 1;
+    }
+  }
+
+
+  return 0;
+}
+
+
+int setRunning(String command){
+  running = command.toInt();
+  Serial.print("Value : ");
+  Serial.println(command);
+  Serial.println(running);
+  return command.toInt();
 }
