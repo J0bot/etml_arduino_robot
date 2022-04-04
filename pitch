@@ -1,0 +1,17 @@
+Problème : Compliqué les robots, l'électronique et la prog
+Solution : Apprendre les bases de la robotique avec un kit
+Le robot est vendu en kit avec tous les composants et un mode d'emploi
+On peut apprendre la programmation de base Arduino, C++, comment créer un projet et compiler
+on peut apprendre comment lire une documenation technique d'un composant par exemple pour le capteur de distance
+on peut apprendre comment lire un schema par exemple pour le pont en H
+on peut apprendre comment cabler, les conventions de base pour le cablage
+On peut aussi apprendre la modélisation 3D à partir d'un schema pour ensuite l'imprimer
+Si on peut pas l'imprimer il y a un plan pour faire le chassis en carton
+Après la première partie on peut apprendre comment utiliser une API et utiliser JSON pour récuperer des données ou en envoyer
+mais avant ça on peut apprendre comment connecter l'arduino à un réseau
+on peut apprendre comment controler l'arduino à distance
+Apprendre la mise en place de tests de fonctionnalités
+Apprendre l'utilisation de javascript
+
+En gros après ce projet on en ressort avec des connaissances en : 
+programmation c++, électronique, réseau, web, modélisation 3D et impression 3D
