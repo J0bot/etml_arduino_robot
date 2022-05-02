@@ -47,6 +47,7 @@ int stopMotors(String);
 int startMotors(String);
 int startFunction(String);
 int setRunning(String);
+int send(String);
 
 
 void setup() {
@@ -155,6 +156,7 @@ void setupAPI()
   rest.function("stop",stopMotors);
   rest.function("function",startFunction);
   rest.function("set_running",setRunning);
+  rest.function("send",send);
   rest.variable("running",&running);
   // Give name and ID to device
   rest.set_id("008");
@@ -274,4 +276,50 @@ int setRunning(String command){
   Serial.println(command);
   Serial.println(running);
   return command.toInt();
+}
+
+int send(String command){
+  #define TIME_STR_LEN 16
+  
+  char time_string[TIME_STR_LEN]; //Déclarer un array de 16 caractères
+  for(int i = 0; i<TIME_STR_LEN ; i++)
+    time_string[i] = '0';
+  // char time_string[] = "0000000000000000"; //Déclarer un array de 16 caractères
+  char function_string[] = "00";
+  int time = 0 ;
+  int function = 0;
+  int len_command = command.length();
+  // tous les bails que j'ai fait là c'est trop compliqué
+  if(command[0] == 't'){
+    Serial.print("len_command : ");
+    Serial.println(len_command);
+    int f_index = 0;
+    for (int i = 1; i < len_command; i++){
+      if (command[i]=='f')
+      {        
+        int index = TIME_STR_LEN-1;
+      
+        for(int j = i-1 ; j>0 ; j--){
+
+          time_string[index] = command[j];
+          index--;
+        }
+        time = atoi(time_string);
+        Serial.print("time : ");
+        Serial.println(time);
+        f_index = i;
+        function_string[0]=command[f_index+1];
+        function_string[1]=command[f_index+2];
+        Serial.print("function_string : ");
+        Serial.println(function_string);
+      }
+
+
+    // En gros Maxiumum : tableau de pointer de functions
+    // * func_list[] = 
+    }
+    //Serial.println("");
+  }
+
+  Serial.println(" ");
 }
