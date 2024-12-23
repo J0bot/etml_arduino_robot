@@ -4,7 +4,7 @@
 
 
 ## Pourquoi ce projet ?
-J'ai créé ce projet pour approfondir mes connaissances en arduino, en robotique et en modélisation 3D.
+J'ai créé ce projet pour approfondir mes connaissances en arduino, en robotique, en électronique et en modélisation 3D.
 
 Il a été effectué dans le cadre du projet d'approfondissement 2 à l'ETML.
 
